@@ -1,0 +1,35 @@
+#
+# COMPILE AND MAKE A TEST DATA
+#
+
+$ make
+$ make data
+
+
+#
+# TEST CASES
+#
+
+# 1. echo
+$ ./msgpack_server 100                       # 100 msgpack-rpc server threads
+$ time ./msgpack_client_mt 100000 echo 100   # 100 client threads (sync call each)
+$ time ./msgpack_client_nb 100000 echo       # 1 thread non-blocking (asynchronous)
+
+$ ./simple_server_mt 100 echo                # 100 simple server threads (pre-threading, all accept())
+$ time ./simple_client_mt 100000 100         # 100 client threads (sync call each)
+
+# 2. random_read
+$ ./msgpack_server 100                              # 100 msgpack-rpc server threads
+$ time ./msgpack_client_mt 100000 random_read 100   # 100 client threads (sync call each)
+$ time ./msgpack_client_nb 100000 random_read       # 1 thread non-blocking (asynchronous)
+
+$ ./simple_server_mt 100 random_read                # 100 simple server threads (pre-threading, all accept())
+$ time ./simple_client_mt 100000 100                # 100 client threads (sync call each)
+
+# 3. loop
+$ ./msgpack_server 100                       # 100 msgpack-rpc server threads
+$ time ./msgpack_client_mt 100000 loop 100   # 100 client threads (sync call each)
+$ time ./msgpack_client_nb 100000 loop       # 1 thread non-blocking (asynchronous)
+
+$ ./simple_server_mt 100 loop                # 100 simple server threads (pre-threading, all accept())
+$ time ./simple_client_mt 100000 100         # 100 client threads (sync call each)
