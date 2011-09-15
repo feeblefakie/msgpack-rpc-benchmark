@@ -28,7 +28,7 @@ std::string method;
 int main(int argc, char *argv[])
 {
   if (argc != 3) {
-    std::cerr << argv[0] << " num_threads echo/random_read" << std::endl;
+    std::cerr << argv[0] << " num_threads echo/random_read/loop" << std::endl;
     exit(1);
   }
   int num_threads = atoi(argv[1]);

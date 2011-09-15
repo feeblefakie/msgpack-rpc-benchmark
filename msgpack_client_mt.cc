@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
   signal(SIGPIPE, SIG_IGN);
 
   if (argc != 4) {
-    std::cerr << argv[0] << " num_reqs echo/random_read num_threads" << std::endl;
+    std::cerr << argv[0] << " num_reqs echo/random_read/loop num_threads" << std::endl;
     exit(1);
   }
   int num_reqs = atoi(argv[1]);
